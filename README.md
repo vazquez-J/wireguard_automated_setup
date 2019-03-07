@@ -1,4 +1,4 @@
-# Wireguard Automated Setup
+# Wireguard Automated Lightsail Setup
 
 This is a personal project I created in order to create
 [https://www.wireguard.com/](wireguad) clients easily by hosting them on an AWS lightsail instance. We are using lightsail since [https://www.terraform.io/docs/providers/aws/r/lightsail_instance.html](it is a service to provide easy virtual private servers with custome software already setup)
