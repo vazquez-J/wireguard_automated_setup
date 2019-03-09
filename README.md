@@ -9,7 +9,11 @@ This will create X number of VPN client profiles that once complete will generat
 
 # Requirements
 
-The only real requirements are an Amazon Web Services account with an IAM user that has admin privileges.
+The only requirements are an Amazon Web Services, the aws-sdk installed and access and secret keys downloaded on your computer. If you need help setting up your api keys simply type 
+```bash
+aws configure
+```
+and follow the prompt. That way you do not have to save, store or use aws api keys inside of the terraform code.
 
 ## Install git
 ```bash
