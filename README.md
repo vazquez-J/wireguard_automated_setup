@@ -31,3 +31,4 @@ I recommend going through these articles, blog posts, and documentation
 - https://golb.hplar.ch/2018/10/wireguard-on-amazon-lightsail.html
 - https://www.ckn.io/blog/2017/11/14/wireguard-vpn-typical-setup/
 - https://www.terraform.io/docs/providers/aws/r/lightsail_instance.html
+- https://devopsideas.com/ansible-local-setup-using-vagrant-virtualbox/
