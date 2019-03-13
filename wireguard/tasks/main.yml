@@ -5,6 +5,6 @@
 - include: wireguard-setup.yml
   tags:
     - wgsetup
--include: wireguard-fetch-profiles.yml
+- include: wireguard-fetch-profiles.yml
   tags:
     -wgfetch
