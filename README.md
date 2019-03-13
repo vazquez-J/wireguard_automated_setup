@@ -3,13 +3,13 @@
 This is a personal project I created in order to create
 [wireguard](https://www.wireguard.com/) clients easily by hosting them on an AWS lightsail instance.
 We are using lightsail since [it is a service to provide easy virtual private servers with custome software already setup](https://www.terraform.io/docs/providers/aws/r/lightsail_instance.html)
-This will create X number of VPN client profiles that once complete will generate a qr code that you will be able to scan using the wireguard application that can be found on the 
+This will create X number of VPN client profiles that once complete will generate a qr code that you will be able to scan using the wireguard application that can be found on the
 [Play store](https://play.google.com/store/apps/details?id=com.wireguard.android).
 
 
 # Requirements
 
-The only requirements are an Amazon Web Services, the aws-sdk installed and access and secret keys downloaded on your computer. If you need help setting up your api keys simply type 
+The only requirements are an Amazon Web Services, the aws-sdk installed and access and secret keys downloaded on your computer. If you need help setting up your api keys simply type
 ```bash
 aws configure
 ```
