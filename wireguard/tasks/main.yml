@@ -4,12 +4,12 @@
   pre_tasks:
     - name: update apt cache
       apt:
-        update_cache: yes
+        update_cache: true
 
   tasks:
     - name: Add wireguard repository
       # TODO: double check to make sure this doesn't already update the cache
-      apt_repository: 
+      apt_repository:
         repo: "deb https://deb.debian.org/debian unstable main"
         state: present
         filename: unstable-wireguard.list
@@ -17,13 +17,45 @@
 
     - name: Install wireguard
       apt:
-        name: "{{item}}"
+        name: "{{ item }}"
         state: latest
       loop:
         - wireguard-dkms
         - wireguard-tools
 
-    ## Configure system environment
-    - name: Enable packet forwarding for IPv4
-      sysctl:
-        name: net.ipv4.ip_forward
+      # Create keypars
+      # create /etc/wireguard dir
+    - name: Create wireguard directory
+       file:
+         path: /etc/wireguard
+         state: directory
+
+    - name: Generate Wireguard private and public key
+      shell: umask 077 && wg genkey | tee /etc/wireguard/privatekey | wg pubkey > /etc/wireguard/publickey
+
+    - name: Register Wireguard private key as variable
+      slurp:
+        src: /etc/wireguard/privatekey
+
+# run wg command
+# create file wg0.conf -> https://docs.ansible.com/ansible/latest/modules/template_module.html?highlight=template
+
+# Setup firewall > https://docs.ansible.com/ansible/latest/modules/iptables_module.html#iptables-module
+# Create the file wg0.conf
+
+# nano wg0.conf
+
+# and insert the following text
+
+# [Interface]
+# Address = 192.168.2.1
+# PrivateKey = server_private_key
+# ListenPort = 54321
+
+# [Peer]
+# PublicKey = client_public_key
+# AllowedIPs = 192.168.2.2/32
+
+# For the ListenPort you need to use the same port number that you specified in the UDP firewall rule on the Lightsail configuration page. This is the port where Wireguard is listening for incoming VPN connections.
+
+# Save the file and close Nano. Next we replace the string server_private_key and client_public_key with the content of the files.
