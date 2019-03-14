@@ -20,9 +20,17 @@ and follow the prompt. That way you do not have to save, store or use aws api ke
 sudo apt-get install git -y
 ```
 
+## Install ansible
+```bash
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt-get update && sudo apt-get upgrade ansible -y
+```
+
+
+
 # Resources Used
 
-I recommend going through these articles, blog posts, and documentation
+I recommend going through these articles, blog posts, and documentation.
 
 - https://www.wireguard.com/
 - https://www.terraform.io/docs/index.html
