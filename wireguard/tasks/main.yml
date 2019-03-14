@@ -1,10 +1,29 @@
 ---
-- include: wireguard-install.yml
-  tags:
-    - wginstall
-- include: wireguard-setup.yml
-  tags:
-    - wgsetup
-- include: wireguard-fetch-profiles.yml
-  tags:
-    -wgfetch
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+
+  tasks:
+    - name: Add wireguard repository
+      # TODO: double check to make sure this doesn't already update the cache
+      apt_repository: 
+        repo: "deb https://deb.debian.org/debian unstable main"
+        state: present
+        filename: unstable-wireguard.list
+        update_cache: true
+
+    - name: Install wireguard
+      apt:
+        name: "{{item}}"
+        state: latest
+      loop:
+        - wireguard-dkms
+        - wireguard-tools
+
+    ## Configure system environment
+    - name: Enable packet forwarding for IPv4
+      sysctl:
+        name: net.ipv4.ip_forward
