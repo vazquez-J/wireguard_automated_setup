@@ -26,7 +26,7 @@
       # Create keypars
       # create /etc/wireguard dir
     - name: Create wireguard directory
-       file:
+      file:
          path: /etc/wireguard
          state: directory
 
@@ -41,10 +41,7 @@
 # create file wg0.conf -> https://docs.ansible.com/ansible/latest/modules/template_module.html?highlight=template
 
 # Setup firewall > https://docs.ansible.com/ansible/latest/modules/iptables_module.html#iptables-module
-# Create the file wg0.conf
-
 # nano wg0.conf
-
 # and insert the following text
 
 # [Interface]
